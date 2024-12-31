@@ -1,0 +1,530 @@
+﻿@model DtDc_Billing.Entity_FR.Company
+
+@using (Ajax.BeginForm("RatemasterEditCompany", "Ratemaster", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "frmEmp",OnBegin="onBegin",OnComplete= "onComplete" }, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="col-md-3">Company Id</label>
+                <div class="col-md-5">
+                    @Html.DisplayFor(model => model.Company_Id, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessage("C_IdError")
+                    @Html.ValidationMessageFor(model => model.Company_Id, "", new { @class = "text-danger" })
+
+                    <input type="hidden" name="Company_Id" value="@Model.Company_Id" />
+                    <input type="hidden" name="c_id" value="@Model.c_id" />
+                    <input type="hidden" name="dfilepath" value="@Model.DocumentFilepath" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Company Name</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Company_Name, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Company_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Company Address</label>
+                <div class="col-md-5">
+                    @Html.TextAreaFor(model => model.Company_Address, new { @class = "form-control input-sm", @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Company_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Phone Number</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Email</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Insurance percentage above 1 lakh</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.InsuranceperAboveonelakh, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.InsuranceperAboveonelakh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Insurance percentage below 1 lakh</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Insurance, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Insurance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Minimum Risk Surcharge</label>
+                <div class="col-md-2">
+                    @*@Html.DropDownList("Minimum_Risk_Charge", null, htmlAttributes: new { @class = "form-control input-sm" })*@
+                    @Html.EditorFor(model => model.Minimum_Risk_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Minimum_Risk_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Other Details</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Other_Details, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Other_Details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Fuel SurCharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Fuel_Sur_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Fuel_Sur_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Covid Surcharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.covidtax, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.covidtax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Topay Charge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Topay_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Topay_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">COD Charge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Cod_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Cod_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">GEC Fuel SurCharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Gec_Fuel_Sur_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Gec_Fuel_Sur_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Royalty Charges</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Royalty_Charges, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Royalty_Charges, "", new { @class = "text-danger" })
+                </div>
+                <span id="royalty-per">
+                    %
+                </span>
+            </div>
+
+
+            <div class="form-group">
+
+                <label class="col-md-3">PF Code</label>
+                <div class="col-md-2">
+                    @Html.DropDownList("Pf_code", null, htmlAttributes: new { @class = "form-control input-sm" })
+                    @Html.ValidationMessageFor(model => model.Pf_code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Company IsRegister</label>
+                <div class="col-md-2">
+                    @Html.DropDownList("IsRegister", null, htmlAttributes: new { @class = "form-control input-sm" })
+
+                    <span id="message2"></span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">GST No  <span id="lblstar">*</span> </label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Gst_No, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Gst_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Pan No</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Pan_No, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Pan_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">D</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.D_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.D_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">G</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.P_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.P_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">X</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.E_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.E_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">V</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.V_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.V_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">I</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.I_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.I_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">N</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.N_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.N_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">UserName</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Password</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Start Date</label>
+                <div class="col-md-2">
+                    @if (ViewBag.StartDate != null)
+                    {
+                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control input-sm", @Value = ViewBag.StartDate } })
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">End Date</label>
+                <div class="col-md-2">
+                    @if (ViewBag.EndDate != null)
+                    {
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control input-sm", @Value = ViewBag.EndDate } })
+                        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+
+                    }
+                </div>
+            </div>
+
+            @if (ViewBag.path != null)
+            {
+                <div class="form-group">
+                    <label class="col-md-3">View Uploaded Documents</label>
+                    <div class="col-md-4" id="pathdiv">
+
+                        <a href="@Url.Action("Download","RateMaster",new {id=Model.Company_Id})" target="_blank">View</a>
+
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div id="Remarkdiv">
+                    <label for="Remark" class="col-md-3">Remark <span class="Reqired">*</span> </label>
+                    <div class="col-md-4">
+                        @Html.TextArea("Remark", new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                        @Html.ValidationMessage("remarkError", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Select Product Type<span class="Reqired">*</span></label>
+                <div class="col-md-6">
+                    @Html.DropDownList("Producttype", ViewBag.Producttype as SelectList, null, htmlAttributes: new { @class = " select2", @multiple = "multiple" })
+                    @Html.ValidationMessage("C_proError", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <input type="hidden" id="selected_tab" name="selected_tab" value="1" />
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <input type="submit" value="Next" class="btn bg-maroon sbmt" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@*@if (ViewBag.SuccessCompany != null)
+    {
+        <script>
+            $(document).ready(function () {
+                var tab = document.getElementById('Tab').value;
+                $('#Tab a[href="#menu1"]').tab('show');
+            });
+        </script>
+
+    }*@
+
+
+@if (ViewBag.SuccessCompany != null)
+{
+    <script>
+        $(document).ready(function () {
+            location.reload();
+        });
+    </script>
+
+}
+
+<script>
+    $(function () {
+        $('#user-list').addClass('active');
+    });
+</script>
+
+<script>
+    $(function () {
+        $('#user-list').addClass('active');
+    });
+
+    $('.select2').select2();
+
+
+
+</script>
+<style>
+    #royalty-per {
+        vertical-align: sub;
+    }
+
+    #Pf_code, #Royalty_Charges, #D_Docket, #P_Docket, #E_Docket, #V_Docket, #I_Docket, #N_Docket, #Insurance, #Minimum_Risk_Charge, #Other_Details, #Fuel_Sur_Charge, #Topay_Charge, #Cod_Charge, #Gec_Fuel_Sur_Charge {
+        width: 100%;
+    }
+
+    .Reqired {
+        color: red;
+    }
+
+    .lblstar {
+        color: red;
+    }
+</style>
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#lblstar').hide();
+
+        $('#IsRegister').click(function () {
+
+            var isreg = $('#IsRegister').val();
+            var message = $("#message2");
+            var lbl = $('#lblstar');
+
+            if (isreg == "IsRegister") {
+
+                $('#lblstar').show();
+                lbl.css("color", "red");
+                message.css("color", "red");
+                message.html("Please Enter GSTNo");
+            }
+
+            else {
+                $('#lblstar').hide();
+                message.html("");
+            }
+
+        });
+    });
+
+
+    $('#StartDate').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+
+    $('#EndDate').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+
+</script>
+<div class="overlay" id="overlayBlock">
+    <div class="loader"></div>
+</div>
+
+<style>
+
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #00000052;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        display: none;
+    }
+
+    .loader {
+        position: absolute;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid blue;
+        border-bottom: 16px solid blue;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        top: 40%;
+        animation: spin 2s linear infinite;
+        bottom: 50%;
+        left: 50%;
+        right: 50%;
+    }
+
+
+    @@-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    #generate-invoice {
+        display: block;
+        height: 400px;
+    }
+
+    .radio {
+        display: inline-block;
+        padding-right: 20px;
+    }
+</style>
+
+
+<style>
+    .input-validation-error {
+        border: 1px solid #ff0000 !important;
+    }
+</style>
+>
+<script type="text/javascript">
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+
+    function onBegin() {
+        scrollToTop();
+        // Show the loader
+        document.getElementById('overlayBlock').style.display = 'block';
+    }
+
+    function onComplete() {
+        // Hide the loader
+        scrollToTop();
+        document.getElementById('overlayBlock').style.display = 'none';
+    }
+</script>
+
+<script>
+
+
+
+
+    $(document).ready(function () {
+        $('.sbmt').click(function () {
+            var isreg = $('#IsRegister').val();
+            var Gstno = $('#Gst_No').val();
+
+            if (isreg == "IsRegister" && Gstno == null) {
+                alert("Please Enter GstNo");
+                return false;
+            }
+
+            else {
+                return true;
+            }
+
+        });
+    });
+
+</script>
+

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<DtDc_Billing.Models.AddRaiseQueryModel>
+
+@{
+    ViewBag.Title = "RaisequeriesStatus";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+
+                    <h4> Raise Queries Status </h4>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_display_block" class="table table-striped table-bordered table-responsive height-450">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Sr No
+                                </th>
+                                <th>
+                                    RaiseQueries Name
+                                </th>
+                                <th>
+                                    Domain Name
+                                </th>
+                                <th>
+                                    RaiseQueries Description
+                                </th>
+
+                                <th>
+                                    RaiseQueries date
+                                </th>
+                                <th>
+                                    RaiseQueries Status
+                                </th>
+                                <th>
+                                    User Name
+                                </th>
+                                <th>
+                                    PF code
+                                </th>
+                                <th>
+                                    Update
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;
+                                foreach (var item in Model)
+                                {
+                                                        <tr>
+
+                                                            <td>
+                                                                @i
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.RaiseQueries_Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Domain_Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.RaiseQueries_Description)
+                                                            </td>
+
+                                                            <td>
+                                                                @item.RaiseQueries_datetime
+                                                            </td>
+                                                            <td>
+                                                                @if (Convert.ToInt32(item.RaiseQueries_Status) == 0)
+                                                                {
+                                                                    string strstatus = "Pending";
+                                                                    @Html.DisplayName(strstatus);
+                                                                }
+                                                                else
+                                                                {
+                                                                    string strstatus = "Resolved";
+                                                                    @Html.DisplayName(strstatus);
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @item.username
+                                                            </td>
+                                                            <td>
+                                                                @item.pfcode
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink("Update", "UpdateRaiseQuery", new { id = item.RaiseQueries_ID })
+                                                            </td>
+                                                        </tr>
+
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function () {
+
+        $('#table_display_block').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": false
+        });
+
+
+    });
+
+    </script>

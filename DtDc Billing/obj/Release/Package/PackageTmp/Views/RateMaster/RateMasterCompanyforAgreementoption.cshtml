@@ -1,0 +1,420 @@
+﻿@model DtDc_Billing.Entity_FR.Company
+
+@using (Html.BeginForm("RatemasterCompanyforAgreementOption", "Ratemaster"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="box-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="col-md-3">Company Id</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Company_Id, new { htmlAttributes = new { @class = "form-control input-sm", onchange = "CheckCompIdAvailability()" } })
+                    @Html.ValidationMessage("C_IdError")
+                    @Html.ValidationMessageFor(model => model.Company_Id, "", new { @class = "text-danger" })
+                    <span id="message1"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Company Name</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Company_Name, new { htmlAttributes = new { @class = "form-control input-sm", onchange = "CheckAvailability()" } })
+                    @Html.ValidationMessageFor(model => model.Company_Name, "", new { @class = "text-danger" })
+                    
+                    <span id="message"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3">Company Address</label>
+                <div class="col-md-5">
+                    @Html.TextAreaFor(model => model.Company_Address, new { @class = "form-control input-sm", @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Company_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Phone Number</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Email</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Insurance percentage above 1 lakh</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.InsuranceperAboveonelakh, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.InsuranceperAboveonelakh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Insurance percentage below 1 lakh</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Insurance, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Insurance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Minimum Risk Surcharge</label>
+                <div class="col-md-2">
+                    @*@Html.DropDownList("Minimum_Risk_Charge", null, htmlAttributes: new { @class = "form-control input-sm" })*@
+                    @Html.EditorFor(model => model.Minimum_Risk_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Minimum_Risk_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-3">Other Details</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Other_Details, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Other_Details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Fuel Surcharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Fuel_Sur_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Fuel_Sur_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Covid Surcharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.covidtax, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.covidtax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Topay Charge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Topay_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Topay_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">COD Charge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Cod_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Cod_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">GEC Fuel Surcharge</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Gec_Fuel_Sur_Charge, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Gec_Fuel_Sur_Charge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Royalty Charges</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Royalty_Charges, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Royalty_Charges, "", new { @class = "text-danger" })
+                </div>
+                <span id="royalty-per">
+                    %
+                </span>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">PF Code</label>
+                <div class="col-md-2">
+                    @Html.DropDownList("Pf_code", null, htmlAttributes: new { @class = "form-control input-sm" })
+                    @Html.ValidationMessageFor(model => model.Pf_code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Company IsRegister</label>
+                <div class="col-md-2">
+                    @Html.DropDownList("IsRegister", null, htmlAttributes: new { @class = "form-control input-sm" })
+                    <span id="message2"></span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">GST No  <span id="lblstar">*</span> </label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Gst_No, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @*@Html.ValidationMessageFor(model => model.Gst_No, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Pan No</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Pan_No, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Pan_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">D</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.D_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.D_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">G</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.P_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.P_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">E</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.E_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.E_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">V</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.V_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.V_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">I</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.I_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.I_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">N</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.N_Docket, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.N_Docket, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">UserName</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">Password</label>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-3">Start Date</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3">End Date</label>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <input type="hidden" id="selected_tab" name="selected_tab" value="1" />
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <input type="submit" value="Next" class="btn btn-primary sbmt" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+@*@if (ViewBag.SuccessCompany != null)
+    {
+        <script>
+            $(document).ready(function () {
+                var tab = document.getElementById('Tab').value;
+                $('#Tab a[href="#menu1"]').tab('show');
+            });
+        </script>
+
+    }*@
+<style>
+    #royalty-per {
+        vertical-align: sub;
+    }
+
+    #Pf_code, #Royalty_Charges, #D_Docket, #P_Docket, #E_Docket, #V_Docket, #I_Docket, #N_Docket, #Insurance, #Minimum_Risk_Charge, #Other_Details, #Fuel_Sur_Charge, #Topay_Charge, #Cod_Charge, #Gec_Fuel_Sur_Charge {
+        width: 100%;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+    function CheckAvailability() {
+        var Compname = $("#Company_Name").val();
+        //alert(Compname);
+        $.ajax({
+            type: "POST",
+            url: "/RateMaster/CheckCompanyname",
+            data: '{Compname: "' + Compname + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var message = $("#message");
+                if (response) {
+
+                    message.css("color", "red");
+                    message.html("Company Name Already Exist");
+                }
+                else {
+
+                    $("#message").html("");
+
+                }
+            }
+        });
+    };
+
+
+    //function ClearMessage() {
+    //    $("#message").html("");
+    //};
+</script>
+
+
+<script type="text/javascript">
+    function CheckCompIdAvailability() {
+        var CompId = $("#Company_Id").val();
+        //alert(Compname);
+        $.ajax({
+            type: "POST",
+            url: "/RateMaster/CheckCompanyID",
+            data: '{CompId: "' + CompId + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var message = $("#message1");
+                if (response) {
+
+                    message.css("color", "red");
+                    message.html("CompanyId Already Exist");
+                }
+                else {
+
+                    $("#message1").html("");
+
+                }
+            }
+        });
+    };
+
+    //function ClearMessage() {
+    //    $("#message").html("");
+    //};
+</script>
+
+
+<script>
+   
+    $(document).ready(function () {
+        $('#lblstar').hide();
+
+        $('#IsRegister').click(function () {
+            
+                    var isreg = $('#IsRegister').val();
+                    var message = $("#message2");
+                    var lbl = $('#lblstar');
+
+                    if (isreg == "IsRegister") {
+
+                        $('#lblstar').show();
+                        lbl.css("color", "red");
+                        message.css("color", "red");
+                        message.html("Please Enter GSTNo");
+                    }
+
+                    else {
+                        $('#lblstar').hide();
+                        message.html("");
+                    }
+
+                });
+            });
+        
+
+    $('#StartDate').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+
+    $('#EndDate').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+</script>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        $('.sbmt').click(function () {
+            var isreg = $('#IsRegister').val();
+            var Gstno = $('#Gst_No').val();
+
+            if (isreg == "IsRegister" && Gstno == null) {
+                alert("Please Enter GstNo");
+                return false;
+            }
+
+            else {
+                return true;
+            }
+
+        });
+    });
+  
+</script>

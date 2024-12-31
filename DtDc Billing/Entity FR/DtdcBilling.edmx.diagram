@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0acaeae594e4f6282b0bfc7e9ea6340" Name="Diagram1">
+        <EntityTypeShape EntityType="DtdcBillingModel.ActivityLog" Width="1.5" PointX="3" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Destination" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Dtdc_Ptp" Width="1.5" PointX="5.25" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.dtdcPlu" Width="1.5" PointX="8.25" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Employee" Width="1.5" PointX="3" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Expense" Width="1.5" PointX="5.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.express_cargo" Width="1.5" PointX="5.25" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Nondox" Width="1.5" PointX="5.25" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Other_Service" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Payment" Width="1.5" PointX="8.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Ratem" Width="1.5" PointX="8.25" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Saving" Width="1.5" PointX="5.25" PointY="61.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.sectorName" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Service_list" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.User" Width="1.5" PointX="3" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.WalletPoint" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.RedeemOtp" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Sendmessage" Width="1.5" PointX="8.25" PointY="61.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtdcBillingModel.wallet_History" Width="1.5" PointX="5.25" PointY="65.125" IsExpanded="true" />
+        <AssociationConnector Association="DtdcBillingModel.fk_emexp" ManuallyRouted="false" />
+        <AssociationConnector Association="DtdcBillingModel.fk_emppay" ManuallyRouted="false" />
+        <AssociationConnector Association="DtdcBillingModel.fk_empsav" ManuallyRouted="false" />
+        <AssociationConnector Association="DtdcBillingModel.fk_emeall" ManuallyRouted="false" />
+        <AssociationConnector Association="DtdcBillingModel.fk_empmes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Receipt_details" Width="1.5" PointX="11.25" PointY="52.5" />
+        <AssociationConnector Association="DtdcBillingModel.fk_rece" />
+        <EntityTypeShape EntityType="DtdcBillingModel.deliverydata" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Franchisee" Width="1.5" PointX="0.75" PointY="52.375" />
+        <AssociationConnector Association="DtdcBillingModel.Activity_Fk" />
+        <AssociationConnector Association="DtdcBillingModel.Emp_Fk" />
+        <AssociationConnector Association="DtdcBillingModel.fk_exp" />
+        <AssociationConnector Association="DtdcBillingModel.fk_emprecept" />
+        <AssociationConnector Association="DtdcBillingModel.fk_Pay" />
+        <AssociationConnector Association="DtdcBillingModel.fk_Sav" />
+        <AssociationConnector Association="DtdcBillingModel.sendmasg_Fk" />
+        <AssociationConnector Association="DtdcBillingModel.sendwall_Fk" />
+        <AssociationConnector Association="DtdcBillingModel.User_Fk" />
+        <EntityTypeShape EntityType="DtdcBillingModel.addcodamount" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.addtopayamount" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Transaction" Width="1.5" PointX="11.25" PointY="42.25" />
+        <AssociationConnector Association="DtdcBillingModel.fk_Tansaction1" />
+        <EntityTypeShape EntityType="DtdcBillingModel.TransactionView" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Cheque" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Issue" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Sector" Width="1.5" PointX="3" PointY="54.125" />
+        <AssociationConnector Association="DtdcBillingModel.FK__Dtdc_Ptp__Sector__29221CFB" />
+        <AssociationConnector Association="DtdcBillingModel.FK__dtdcPlus__Sector__2B0A656D" />
+        <AssociationConnector Association="DtdcBillingModel.FK__express_c__Secto__2EDAF651" />
+        <AssociationConnector Association="DtdcBillingModel.fk_sect" />
+        <AssociationConnector Association="DtdcBillingModel.fk_nod" />
+        <AssociationConnector Association="DtdcBillingModel.fk_rateamaster" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Company" Width="1.5" PointX="3" PointY="59.375" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Notification" Width="1.5" PointX="11.375" PointY="0.75" />
+        <AssociationConnector Association="DtdcBillingModel.FK__Nondox__Company___30C33EC3" />
+        <AssociationConnector Association="DtdcBillingModel.FK__Ratem__Company_i__339FAB6E" />
+        <AssociationConnector Association="DtdcBillingModel.fk_company" />
+        <AssociationConnector Association="DtdcBillingModel.fk_nond" />
+        <AssociationConnector Association="DtdcBillingModel.fk_ptp" />
+        <AssociationConnector Association="DtdcBillingModel.fk_ptpexp" />
+        <AssociationConnector Association="DtdcBillingModel.fk_Tansaction" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Complaint" Width="1.5" PointX="11.375" PointY="4" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Holiday" Width="1.5" PointX="11.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.popupimage" Width="1.5" PointX="11.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.ReplyAdmin" Width="1.5" PointX="13.625" PointY="4" />
+        <AssociationConnector Association="DtdcBillingModel.FK__ReplyAdmi__Compl__42ACE4D4" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Invoice" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.singleinvoiceconsignment" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Cash" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.NEFT" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.CreditNote" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Stationary" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.ExpiredStationary" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Holiday1" Width="1.5" PointX="5.25" PointY="73.5" />
+        <AssociationConnector Association="DtdcBillingModel.FK__Holidays__User_I__345EC57D" />
+        <EntityTypeShape EntityType="DtdcBillingModel.Issuedstationary" Width="1.5" PointX="0.75" PointY="15.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1165 @@
+﻿@model DtDc_Billing.Entity_FR.Invoice
+
+
+<link href="~/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<script src="~/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+@using (Ajax.BeginForm("SaveInvoice", new AjaxOptions()
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "form-Cons",
+    InsertionMode = InsertionMode.Replace,
+
+    LoadingElementId = "overlayBlock",
+
+}))
+{
+
+    <section class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h4>Generate Invoice</h4>
+                        @*<div id="element" class="btn btn-default show-modal">show modal</div>*@
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="form-horizontal">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-sm-2">
+                                        <div>
+                                            <label for="email">Customer Id:</label>
+
+                                            @Html.EditorFor(model => model.Customer_Id, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div>
+                                            <label for="pwd">Address:</label>
+                                            <br />
+                                            @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @rows = "3", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="col-sm-3">
+                                        <div>
+                                            <label for="email">Invoice No:</label>
+                                            @if (Model != null && Model.invoiceno != null && Model.invoiceno.Length >= 10)
+                                            {
+                                                @Html.EditorFor(model => model.invoiceno, new { htmlAttributes = new { @class = "form-control", @Value = Model.invoiceno, @readonly = "readonly" } })
+                                            }
+
+                                            else if (ViewBag.nextinvoice != null)
+                                            {
+                                                @Html.EditorFor(model => model.invoiceno, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.nextinvoice, @readonly = "readonly" } })
+                                            }
+                                            else if (ViewBag.lastInvoiceno != null)
+                                            {
+                                                @Html.EditorFor(model => model.invoiceno, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.lastInvoiceno, @readonly = "readonly" } })
+                                            }
+                                            else
+                                            {
+                                                @Html.EditorFor(model => model.invoiceno, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                            }
+
+
+
+                                            <label for="email">Period From:</label>
+                                            @Html.ValidationMessageFor(model => model.Tempdatefrom, "", new { @class = "text-danger" })
+
+                                            @Html.EditorFor(model => model.Tempdatefrom, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="email">Invoice Date:</label>
+                                            @Html.ValidationMessageFor(model => model.tempInvoicedate, "", new { @class = "text-danger" })
+
+                                            @Html.EditorFor(model => model.tempInvoicedate, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                            <label for="email">Period To:</label>
+                                            @Html.ValidationMessageFor(model => model.TempdateTo, "", new { @class = "text-danger" })
+
+                                            @Html.EditorFor(model => model.TempdateTo, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">  <input type="button" class="btn btn-primary pull-right" id="show" value="Show" /></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="generate-invoice" class="table table-bordered table-striped table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr. No</th>
+                                                <th>Consignment No</th>
+                                                <th>Weight</th>
+                                                <th>Pincode</th>
+                                                <th>Mode</th>
+                                                <th>Amount</th>
+                                                <th>Booking</th>
+                                                <th>Insurance</th>
+                                                <th>Claim Amount</th>
+                                                <th>Percentage</th>
+                                                <th>Risk Surcharge</th>
+                                                <th>Other Charges</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- column -->
+                                <div class="col-sm-12">
+                                    <!-- Horizontal Form -->
+                                    <div class="">
+                                        <!-- form start -->
+                                        <form class="">
+                                            <div class="box-body">
+                                                <!-- select -->
+                                                <div class="">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-xs-12 mb-15">
+                                                            <!-- radio -->
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="amount" class="col-sm-4 control-label">Invoice Discount</label>
+                                                                    <div class="col-sm-4">
+
+                                                                        @if (ViewBag.disc == "yes")
+                                                                        {
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "yes", new { @checked = true })
+                                                                                    Yes
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "no")
+                                                                                    No
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else if (Model != null && Model.discount == "yes")
+                                                                        {
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "yes", new { @checked = true })
+                                                                                    Yes
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "no")
+                                                                                    No
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "yes")
+                                                                                    Yes
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    @Html.RadioButtonFor(m => m.discount, "no", new { @checked = true })
+                                                                                    No
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+
+
+
+                                                                    </div>
+                                                                    <div id="discountdiv" style="display:none" class="col-sm-4">
+                                                                        <div class="col-sm-5 no-padding">
+                                                                            @Html.EditorFor(model => model.discountper, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                                                                        </div>
+                                                                        <div class="col-sm-5 col-sm-offset-1 no-padding">
+                                                                            @Html.EditorFor(model => model.discountamount, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly", @style = "width: 100px" } })
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- radio -->
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="amount" class="col-sm-4 control-label">Reverse Charge</label>
+                                                                    <div class="col-sm-8">
+
+                                                                        <div class="radio">
+                                                                            <label>
+                                                                                <input type="radio" name="reverse-charge" id="reverse-charge-yes" value="rev-yes" checked>
+                                                                                Yes
+                                                                            </label>
+                                                                        </div>
+
+
+                                                                        <div class="radio">
+                                                                            <label>
+                                                                                <input type="radio" name="reverse-charge" id="reverse-charge-no" value="cod-no">
+                                                                                No
+                                                                            </label>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-xs-12 mb-15">
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="total-amt" class="col-sm-4 control-label">Total</label>
+
+                                                                    <div class="col-sm-8">
+                                                                        @Html.EditorFor(model => model.total, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="two-block-inline" class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="fuelsurcharge" class="col-sm-4 col-xs-12 control-label">FuelSurcharge Tax</label>
+                                                                    <div class="col-sm-2 col-xs-4">
+                                                                        @Html.EditorFor(model => model.fullsurchargetax, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-xs-8">
+
+
+                                                                        @Html.EditorFor(model => model.fullsurchargetaxtotal, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="two-block-inline" class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="fuelsurcharge" class="col-sm-4 col-xs-12 control-label">Covid-19 Surcharge Tax</label>
+                                                                    <div class="col-sm-2 col-xs-4">
+                                                                        @Html.EditorFor(model => model.covidtax, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-xs-8">
+
+
+                                                                        @Html.EditorFor(model => model.covidtaxtotal, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="subtotal" class="col-sm-4 control-label">SubTotal</label>
+
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" class="form-control" id="subtotal" readonly="readonly" placeholder="0">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="service-charge" class="col-sm-4 control-label">Royalty Charge</label>
+
+                                                                    <div class="col-sm-8">
+
+                                                                        @Html.EditorFor(model => model.Royalty_charges, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="service-charge" class="col-sm-4 control-label">Docket Charge</label>
+
+
+
+
+
+
+
+                                                                    <div class="col-sm-8">
+                                                                        @Html.EditorFor(model => model.Docket_charges, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="other-charge" class="col-sm-4 control-label">Other Charge</label>
+
+                                                                    <div class="col-sm-8">
+                                                                        @Html.EditorFor(model => model.othercharge, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <label for="gst-total" class="col-sm-4 col-xs-12 control-label">GST</label>
+                                                                    <div class="col-sm-2 col-xs-4">
+                                                                        @Html.EditorFor(model => model.servicetax, new { htmlAttributes = new { @type = "text", @class = "form-control", @Value = ViewBag.Gst } })
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-xs-8">
+                                                                        @Html.EditorFor(model => model.servicetaxtotal, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+
+                                                                <div class="col-sm-12">
+
+                                                                    <label for="net-amount" class="col-sm-4 control-label">Net Amount</label>
+
+                                                                    <div class="col-sm-8">
+
+                                                                        @Html.EditorFor(model => model.netamount, new { htmlAttributes = new { @type = "text", @class = "form-control", @readonly = "readonly" } })
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="form-group">
+
+                                                                <div class="col-sm-12">
+                                                                    <div id="Remarkdiv">
+
+                                                                        <label for="Remark" class="col-sm-4 control-label">Remark <span class="Reqired">*</span> </label>
+                                                                        <div class="col-sm-8">
+                                                                            @Html.TextArea("Remark", new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- /.box-body -->
+                                            <div class="box-footer">
+                                                <button type="submit" name="submit" value="Sms" class="btn btn-primary">Send Invoice From SMS</button>
+                                                <button type="submit" name="submit" value="Email" class="btn btn-primary">Send Invoice From Email</button>
+                                                @*<button type="submit" name="submit" value="Export" class="btn btn-primary">Export To D://ExportedInvoice</button>*@
+                                                <button type="submit" name="submit" value="Generate" id="Generate" class="btn btn-primary sbmt">Generate</button>
+                                                <div id="logbtn">
+                                                    <button type="submit" name="submit" value="Save" class="btn btn-success pull-right sbmt">Save</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-footer -->
+                                        </form>
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                                <!--/.col (right) -->
+                            </div>
+                            <!-- /.row -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+<div class="overlay" id="overlayBlock">
+    <div class="loader"></div>
+</div>
+
+<style>
+
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #00000052;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        display: none;
+    }
+
+    .loader {
+        position: absolute;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid blue;
+        border-bottom: 16px solid blue;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        top: 40%;
+        animation: spin 2s linear infinite;
+        bottom: 50%;
+        left: 50%;
+        right: 50%;
+    }
+
+
+    @@-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    #generate-invoice {
+        display: block;
+        height: 400px;
+    }
+
+    .radio {
+        display: inline-block;
+        padding-right: 20px;
+    }
+</style>
+
+<style>
+    .Reqired {
+        color: red;
+    }
+
+    #example1 {
+        display: block;
+    }
+
+    .table-scroll {
+        height: 400px;
+    }
+</style>
+
+<style>
+    .input-validation-error {
+        border: 1px solid #ff0000 !important;
+    }
+</style>
+@*<script>
+        $(document).ready(function () {
+            $(function () {
+                var $ckfield = CKEDITOR.replace('textarea-ckeditor');
+
+                $ckfield.on('change', function () {
+                    $ckfield.updateElement();
+                });
+
+            });
+        });
+    </script>*@
+
+
+@if (ViewBag.success != null)
+{
+    <script>
+        alert("Invoice Added SuccessFully");
+    </script>
+}
+
+
+<script>
+
+    var total = 0;
+    var D_Docket = 0, P_Docket = 0, E_Docket = 0, V_Docket = 0, I_Docket = 0, N_Docket = 0;
+    var Docket_Charge = 0;
+    var Royalty_Per = 0;
+
+
+
+
+
+    $(document).ready(function () {
+
+
+
+        var customerid = $('Customer_Id').val();
+        var Tempdatefrom = $('Tempdatefrom').val();
+        var TempdateTo = $('TempdateTo').val();
+
+
+        if (customerid != "" && Tempdatefrom != "" && TempdateTo != "") {
+            $("#show").click();
+        }
+
+
+
+        $('#Customer_Id').keyup(function () {
+            // alert("Keyup");
+            var custid = $("#Customer_Id").val();
+            var invno='@ViewBag.invno';
+
+
+            $.ajax({
+                type: 'Get',
+                dataType: 'json',
+                url: '/Invoice/Invoicedetails',
+                data: { CustomerId: custid,invono : invno },
+                success: function (Data) {
+
+                    $('#Address').val(Data.Company_Address);
+                    $('#fullsurchargetax').val(Data.Fuel_Sur_Charge);
+                    $('#covidtax').val(Data.covidtax);
+                    $('#invoiceno').val(Data.Other_Details);
+
+                    D_Docket = Data.D_Docket;
+                    P_Docket = Data.P_Docket;
+                    E_Docket = Data.E_Docket;
+                    I_Docket = Data.I_Docket;
+                    V_Docket = Data.V_Docket;
+                    N_Docket = Data.N_Docket;
+                    Royalty_Per = Data.Royalty_Charges;
+
+                }
+            });
+
+
+        });
+
+
+
+
+        $('#show').click(function () {
+
+            var custid = $('#Customer_Id').val();
+            var periodfrom = $('#Tempdatefrom').val();
+            var periodto = $('#TempdateTo').val();
+
+
+            $.ajax({
+                type: 'GET',
+                /**/
+                /**/
+                url: '@Url.Action("InvoiceTable")',
+    /**/
+    /**/
+    data: { CustomerId: custid, Tempdatefrom: periodfrom, TempdateTo: periodto },
+    dataType: 'json',
+    success: function (data) {
+
+        var rows;
+        $("#generate-invoice tbody").empty();
+        total = 0;
+        Docket_Charge = 0;
+        $.each(data, function (i, item) {
+            rows += "<tr>"
+                + "<td>" + (i + 1) + "</td>"
+                + "<td>" + item.Consignment_no + "</td>"
+                + "<td>" + item.chargable_weight + "</td>"
+                + "<td>" + item.Pincode + "</td>"
+                + "<td>" + item.Mode + "</td>"
+
+                + "<td>" + item.Amount + "</td>"
+                + "<td>" + item.tembookingdate + "</td>"
+                + "<td>" + item.Insurance + "</td>"
+                + "<td>" + item.Claimamount + "</td>"
+                + "<td>" + item.Percentage + "</td>"
+                + "<td>" + item.Risksurcharge + "</td>"
+                + "<td>" + (item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges) + "</td>"
+                + "<td>" + (item.Risksurcharge + item.Amount + item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges) + "</td>"
+
+                + "</tr>";
+
+            	
+
+
+            ///////Calculating Docket amount
+            var str = item.Consignment_no;
+            var res = str.charAt(0);
+
+            if (res.toLowerCase() == "d") {
+                Docket_Charge = Docket_Charge + D_Docket;
+                // alert(Docket_Charge);
+            }
+            else if (res.toLowerCase() == "g") {
+                Docket_Charge = Docket_Charge + P_Docket;
+            }
+            else if (res.toLowerCase() == "x") {
+                Docket_Charge = Docket_Charge + E_Docket;
+            }
+            else if (res.toLowerCase() == "v") {
+                Docket_Charge = Docket_Charge + V_Docket;
+            }
+            else if (res.toLowerCase() == "i") {
+                Docket_Charge = Docket_Charge + I_Docket;
+            }
+            else if (res.toLowerCase() == "n") {
+                Docket_Charge = Docket_Charge + N_Docket;
+            }
+            //////////////////
+
+
+            total = total + (item.Risksurcharge + item.Amount + item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges);
+
+
+        });
+
+
+        $('#total').val(total);
+        $('#total').keyup();
+        $('#Docket_charges').val(Docket_Charge);
+        $('#Docket_charges').keyup();
+        set_Docket_charges();
+
+
+        $('#generate-invoice tbody').append(rows);
+    },
+    error: function (emp) {
+           $.ajax({
+                        type: 'GET',
+                        /**/
+                        /**/
+                        url: '@Url.Action("Getvalues")',
+                        /**/
+                        /**/
+                        data: { CustomerId: custid, Tempdatefrom: periodfrom, TempdateTo: periodto },
+                        dataType: 'json',
+                        success: function (data) {
+
+                            alert(data);
+                            $('#total').val(data);
+                            $('#total').keyup();
+                            $('#Docket_charges').keyup();
+                            set_Docket_charges();
+
+
+               }
+
+
+        });
+
+
+    }
+});
+
+
+});
+
+
+
+
+
+
+
+     $('#total,#fullsurchargetax,#Royalty_charges,#Docket_charges,#othercharge,#servicetax,#covidtax').keyup(function () {
+var total = $('#total').val();
+var fullsurchargetax = $('#fullsurchargetax').val();
+
+var percamount = ((total * parseFloat("0" + fullsurchargetax)) / 100);
+
+            $('#fullsurchargetaxtotal').val(percamount);
+
+            //
+            var covidtax = $('#covidtax').val();
+
+            var percamount2 = ((total * parseFloat("0" + covidtax)) / 100);
+
+            $('#covidtaxtotal').val(percamount2);
+
+set_subtotal();
+Gst_Amount();
+Net_Amount();
+});
+
+
+
+$('[name="discount"]').change(function () {
+
+var Invoice = $('input[name="discount"]:checked').val();
+
+//alert(Insuranceval);
+
+if (Invoice == "yes") {
+    $('#discountdiv').show();
+    $('#discountper').keyup();
+}
+else {
+    $('#discountdiv').hide();
+    $("#show").click();
+}
+
+
+});
+
+
+$('#discountper').keyup(function () {
+
+
+
+var discount = $('#discountper').val();
+
+    var percamount = ((parseFloat("0" + total) * parseFloat("0" + discount)) / 100);
+
+    $('#discountamount').val(percamount);
+
+var ttl = total;
+var set_total_amt = ttl - percamount;
+
+if (percamount != 0) {
+
+    $('#total').val(set_total_amt);
+
+    $('#total').keyup();
+}
+else {
+    $('#total').val(total);
+}
+
+});
+
+
+
+function set_subtotal() {
+
+var total = $('#total').val();
+    var fullsurchargetax = $('#fullsurchargetaxtotal').val();
+
+    var covidtax = $('#covidtaxtotal').val();
+
+    $('#subtotal').val(parseFloat("0" + total) + parseFloat("0" + fullsurchargetax) + parseFloat("0" + covidtax));
+}
+
+function set_Docket_charges() {
+
+
+var percamount = ((total * parseFloat("0" + Royalty_Per)) / 100);
+
+$('#Royalty_charges').val(percamount);
+$('#Royalty_charges').keyup();
+
+//alert(percamount);
+}
+
+function Net_Amount() {
+
+var total = $('#total').val();
+    var fullsurchargetax = $('#fullsurchargetaxtotal').val();
+    //var covidtax = $('#covidtaxtotal').val();
+var Royalty_charges = $('#Royalty_charges').val();
+var Docket_charges = $('#Docket_charges').val();
+var Gst = $('#servicetaxtotal').val();
+    var other_charges = $('#othercharge').val();
+    var covidtaxtotal = $('#covidtaxtotal').val();
+
+
+
+
+    var netamt = parseFloat("0" + total) + parseFloat("0" + fullsurchargetax) + parseFloat("0" + Royalty_charges) + parseFloat("0" + Docket_charges) + parseFloat("0" + Gst) + parseFloat("0" + other_charges) + parseFloat("0" + covidtaxtotal);
+
+// alert(netamt);
+$('#netamount').val(netamt.toFixed(2));
+}
+
+
+function Gst_Amount() {
+
+   
+var total = $('#total').val();
+    var fullsurchargetax = $('#fullsurchargetaxtotal').val();
+    var covidtax = $('#covidtaxtotal').val();
+var Royalty_charges = $('#Royalty_charges').val();
+    var Docket_charges = $('#Docket_charges').val();
+    var othercharge = $('#othercharge').val();
+
+    var gst = $('#servicetax').val();
+
+    var gst_total = parseFloat("0" + total) + parseFloat("0" + fullsurchargetax) + parseFloat("0" + Royalty_charges) + parseFloat("0" + Docket_charges) + parseFloat("0" + covidtax) + parseFloat("0" + othercharge);
+
+    var percamount = ((gst_total * parseFloat("0" + gst)) / 100);
+
+$('#servicetaxtotal').val(percamount.toFixed(2));
+
+}
+
+
+
+
+
+
+
+
+
+
+$('#Tempdatefrom').datepicker({
+autoclose: true,
+format: 'dd-mm-yyyy'
+});
+
+$('#tempInvoicedate').datepicker({
+autoclose: true,
+format: 'dd-mm-yyyy'
+});
+
+$('#TempdateTo').datepicker({
+autoclose: true,
+format: 'dd-mm-yyyy'
+});
+
+
+/**/
+/**/
+if ('@ViewBag.disc' == "yes") {
+        /**/
+        /**/
+
+        $('#discountdiv').show();
+        $('#discountamount').keyup();
+        set_subtotal();
+    }
+    else {
+        $('#discountdiv').hide();
+        set_subtotal();
+    }
+
+
+
+    var Pcustid = $("#Customer_Id").val();
+    var Pperiodfrom = $("#Tempdatefrom").val();
+    var Pperiodto = $("#TempdateTo").val();
+
+        //alert("calling from here");
+    if (Pcustid != "" && Pperiodfrom != "" && Pperiodto != "") {
+        $('#Customer_Id').keyup();
+        $("#generate-invoice tbody").empty();
+        total = 0;
+        Docket_Charge = 0;
+        var custid = $('#Customer_Id').val();
+        var periodfrom = $('#Tempdatefrom').val();
+        var periodto = $('#TempdateTo').val();
+
+        $.ajax({
+            type: 'GET',
+            /**/
+            /**/
+            url: '@Url.Action("InvoiceTable")',
+    /**/
+    /**/
+    data: { CustomerId: custid, Tempdatefrom: periodfrom, TempdateTo: periodto },
+    dataType: 'json',
+    success: function (data) {
+
+        var rows;
+
+        $.each(data, function (i, item) {
+            console.log(item.Consignment_no);
+            rows += "<tr>"
+                + "<td>" + (i + 1) + "</td>"
+                + "<td>" + item.Consignment_no + "</td>"
+                + "<td>" + item.chargable_weight + "</td>"
+                + "<td>" + item.Pincode + "</td>"
+                + "<td>" + item.Mode + "</td>"
+
+                + "<td>" + item.Amount + "</td>"
+                + "<td>" + item.tembookingdate + "</td>"
+                + "<td>" + item.Insurance + "</td>"
+                + "<td>" + item.Claimamount + "</td>"
+                + "<td>" + item.Percentage + "</td>"
+                + "<td>" + item.Risksurcharge + "</td>"
+                + "<td>" + (item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges) + "</td>"
+                + "<td>" + (item.Risksurcharge + item.Amount + item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges) + "</td>"
+
+                + "</tr>";
+
+
+
+
+            ///////Calculating Docket amount
+            var str = item.Consignment_no;
+            var res = str.charAt(0);
+
+            if (res.toLowerCase() == "d") {
+                Docket_Charge = Docket_Charge + D_Docket;
+
+            }
+            else if (res.toLowerCase() == "g") {
+                Docket_Charge = Docket_Charge + P_Docket;
+
+
+            }
+            else if (res.toLowerCase() == "x") {
+                Docket_Charge = Docket_Charge + E_Docket;
+            }
+            else if (res.toLowerCase() == "v") {
+                Docket_Charge = Docket_Charge + V_Docket;
+            }
+            else if (res.toLowerCase() == "i") {
+                Docket_Charge = Docket_Charge + I_Docket;
+            }
+            else if (res.toLowerCase() == "n") {
+                Docket_Charge = Docket_Charge + N_Docket;
+            }
+            //////////////////
+
+
+            total = total + (item.Risksurcharge + item.Amount + item.Handlingcharges + item.GEC3Additioncharges + item.Packingcharges);
+
+
+
+        });
+
+
+
+        $('#total').val(total);
+        $('#total').keyup();
+        $('#Docket_charges').val(Docket_Charge);
+        $('#Docket_charges').keyup();
+        set_Docket_charges();
+
+        /**/
+        /**/
+        if ('@ViewBag.disc' == "yes") {
+        /**/
+        /**/
+
+        $('#discountdiv').show();
+        $('#discountamount').keyup();
+        set_subtotal();
+    }
+    else {
+        $('#discountdiv').hide();
+        set_subtotal();
+        }
+
+        var disc = '@(Model==null?"no" : Model.discount)';
+
+        if (disc =="yes") {
+        /**/
+        /**/
+        $('#discountdiv').show();
+        $('#discountper').keyup();
+        set_subtotal();
+    }
+        else {
+
+        $('#discountdiv').hide();
+        set_subtotal();
+    }
+
+    $('#generate-invoice tbody').append(rows);
+},
+error: function (emp) {
+    alert('error');
+}
+});
+
+
+
+}
+
+
+$(function () {
+
+
+$(".tag-check").keydown(function (event) {
+var tb = $(this).get(0);
+var start = tb.selectionStart;
+
+var end = tb.selectionEnd;
+var reg = new RegExp("(<.+?>)", "g");
+var amatch = null;
+while ((amatch = reg.exec(tb.value)) != null) {
+    var thisMatchStart = amatch.index - 1;
+    var thisMatchEnd = amatch.index + amatch[0].length + 1;
+    if (start <= thisMatchStart && end > thisMatchStart) {
+        event.preventDefault();
+        return false;
+    }
+    else if (start > thisMatchStart && start < thisMatchEnd) {
+        event.preventDefault();
+        return false;
+    }
+}
+});
+});
+
+});
+</script>
+
+
+<script type="text/javascript">
+    function onLoginBegin() {
+        // Disable the button and hide the other image here
+        // or you can hide the whole div like below
+        $('#logbtn').hide();
+    }
+</script>
+
+
+
+<script>
+    $(function () {
+        var availableTutorials = [
+
+        ];
+        var company_idarr = [
+
+        ];
+
+        $.ajax({
+            type: 'GET',
+            /**/
+            /**/
+            /**/
+            /**/
+            /**/
+            url: '@Url.Action("CustomerIdAutocomplete")',
+    /**/
+    /**/
+    /**/
+    /**/
+    /**/
+    data: {},
+    dataType: 'json',
+    success: function (data) {
+        $.each(data, function (i, item) {
+            company_idarr.push(item.Company_Id);
+        });
+
+    }
+});
+
+$("#Customer_Id").autocomplete({
+    source: company_idarr,
+    select: function (event, ui) {
+        $("#Customer_Id").val(ui.item.value);
+       // $('#Customer_Id').keyup();
+
+    }
+});
+
+
+});
+
+</script>
+<a id="saveinv" style="" href="" target="_blank" download>
+</a>
+@if (ViewBag.invoiceno != null)
+{
+    <script>
+        $("#overlayBlock").show();
+    /**/
+    var print = '@ViewBag.pdf';
+    /**/
+
+    if (print == "True") {
+        /**/
+        var myParamether = '@ViewBag.invoiceno';
+    /**/
+
+    //window.open('/Invoice/ReportPrinterMethod?report=reportview&myParameter=' + myParamether, 'ReportView', '');
+        $.get("/Invoice/SavepdInvoice", { myParameter: myParamether }, function (data) {
+            $('#saveinv').attr('href', "http://admin.atkxpress.com/PDF/" + data);
+
+            document.getElementById('saveinv').click();
+            $("#overlayBlock").hide();
+            console.log("Rajkumar");
+            location.reload();
+
+        });
+}
+    </script>
+}
+
+
+<script>
+  
+   
+    let baseUrl = (window.location).href;
+    let InvNo = new URL(baseUrl);
+    let search_params = InvNo.searchParams;
+
+    let id = search_params.get('Invoiceno');
+    //alert(id)
+
+    if (id != null) {
+        /**/
+        /**/ $('#Remarkdiv').show();
+        $(document).ready(function () {
+            $('.sbmt').click(function () {
+                var Remark = $('#Remark').val();
+
+
+                if (Remark == "") {
+                    alert("Please Enter Remark");
+                    return false;
+                }
+
+                else {
+                    return true;
+                }
+
+            });
+        });
+    }
+        else {
+
+        $('#Remarkdiv').hide();
+
+    }
+
+</script>
+
+@*<script>
+    $(document).ready(function () {
+        $('.sbmt').click(function () {
+            var Remark = $('#Remark').val();
+      
+
+            if (Remark == "") {
+                alert("Please Enter Remark");
+                return false;
+            }
+           
+            else {
+                return true;
+            }
+
+        });
+    });
+</script>*@
+
+
+

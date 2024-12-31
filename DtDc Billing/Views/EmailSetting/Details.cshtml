@@ -1,0 +1,67 @@
+﻿@model DtDc_Billing.Entity_FR.EmailPromotion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Support.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmailPromotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.s_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.s_pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.s_pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.eid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

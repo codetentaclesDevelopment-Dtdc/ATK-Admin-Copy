@@ -1,0 +1,149 @@
+﻿@model IEnumerable<DtDc_Billing.Entity_FR.Invoice>
+
+@{
+    /**/
+
+    ViewBag.Title = "ViewInvoice";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header  with-border">
+                    <h4>View DP Invoice</h4>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table_display_block" class="table table-striped table-bordered table-responsive height-450">
+                        <thead>
+                            <tr>
+
+                                <th></th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.invoiceno)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.invoicedate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.periodfrom)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.periodto)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.total)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fullsurchargetax)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fullsurchargetaxtotal)
+                                </th>
+                                <th>
+                                    GST
+                                </th>
+                                <th>
+                                    GST Amount
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.othercharge)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.netamount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Customer_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayName("View Remark")
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Download","Invoice",new {id = item.IN_Id })" target="_blank">View</a>
+                                    @Html.ActionLink("Edit", "DpInvoice", new { Invoiceno = item.invoiceno })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.invoiceno)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempInvoicedate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tempdatefrom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TempdateTo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fullsurchargetax)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fullsurchargetaxtotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.servicetax)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.servicetaxtotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.othercharge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.netamount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer_Id)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("View Remark", "ViewInvoiceDPRemark", new { Invoiceno = item.invoiceno }, new { target = "_blank" })
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<script>
+    $(document).ready(function () {
+      $(function () {
+
+                    $('#table_display_block').dataTable({
+                        "bPaginate": false,
+                        "bLengthChange": true,
+                        "bFilter": true,
+                        "bSort": true,
+                        "bInfo": false,
+                        "bAutoWidth": false
+                    });
+
+
+        });
+    });
+</script>

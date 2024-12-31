@@ -1,0 +1,269 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <style>
+        .chart {
+            border: 3px solid royalblue;
+        }
+    </style>
+</head>
+
+
+<body>
+   
+   
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Charts</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="myChart" class="chart" width="400" height="200"></canvas>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+                @*<script>
+         var result = @Html.Raw(ViewBag.DataPoints);
+                    var dpsx = []; var dpsy = [];
+        for (var i = 0; i < result.length; i++){
+
+            dpsx.push({
+                "x": new Date(result[i].year, result[i].month - 1).toLocaleString('en-us', { month: 'short', year: "numeric" })
+            })
+            dpsy.push({
+                "y": result[i].netamount
+            });
+                    }
+
+                    //for (var i = 0; i < result.length; i++) {
+
+                    //    dps.push({ "x": new Date(result[i].year, result[i].month - 1).toLocaleString('en-us', { month: 'short', year: "numeric" }), "y": result[i].netamount });
+                    //}
+
+                    console.log(dpsx);
+                    console.log(dpsy);
+                   
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line', // also try bar or other graph types
+
+                        // The data for our dataset
+                        data: {
+                            labels: dpsx,
+                            //["Jul 2022", "Aug 2022", "Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                            // Information about the dataset
+                            datasets: [{
+                                label: "Total Sale",
+                                backgroundColor: 'lightblue',
+                                borderColor: 'royalblue',
+                                data: dpsy,//[26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76, 110.8, 142.6],
+                            }]
+                        },
+
+                        // Configuration options
+                        options: {
+                            //layout: {
+                            //    padding: 10,
+                            //},
+                            //legend: {
+                            //    position: 'bottom',
+                            //},
+                            title: {
+                                display: true,
+                                text: 'Month Vs Total Sale'
+                            },
+                            //scales: {
+                            //    yAxes: [{
+                            //        scaleLabel: {
+                            //            display: true,
+                            //            labelString: 'Total Billed(₹)',
+
+                            //        }
+                            //    }],
+                            //    xAxes: [{
+                            //        scaleLabel: {
+                            //            display: true,
+                            //            labelString: 'Month of the Year',
+
+                            //        }
+                            //    }]
+                            //},
+                            animation: {
+                                animation: true,
+                            },
+                            legend: {
+                                position: "bottom"
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "rgba(0,0,0,0.5)",
+                                        fontStyle: "bold",
+                                        //beginAtZero: true,
+                                        padding: 10
+
+                                    },
+                                    gridLines: {
+                                        drawTicks: false,
+                                        display: false
+                                    },
+                                     scaleLabel: {
+                                   display: true,
+                                       labelString: 'Total Billed(₹)',
+
+                                    }
+
+                                }],
+                                xAxes: [{
+
+                                    //type: 'time',
+                                    //time: {
+                                    //    parser: 'MM/DD/YYYY HH:mm',
+                                    //    tooltipFormat: 'll HH:mm',
+                                    //    unit: 'Month',
+                                    //    unitStepSize: 1,
+                                    //    displayFormats: {
+                                    //        'Month': 'MM/DD/YYYY'
+                                    //    }
+                                    //},
+                                    //time: {
+                                    //    unit: 'month'
+                                    //},
+                                   // distribution: 'linear',
+                                    //time: {
+                                    //    displayFormats: {
+                                    //        'millisecond': 'MMM DD',
+                                    //        'second': 'MMM DD',
+                                    //        'minute': 'MMM DD',
+                                    //        'hour': 'MMM DD',
+                                    //        'day': 'MMM DD',
+                                    //        'week': 'MMM DD',
+                                    //        'month': 'MMM DD',
+                                    //        'quarter': 'MMM DD',
+                                    //        'year': 'MMM DD',
+                                    //    }
+                                    //},
+
+                                    //ticks: {
+                                    //    padding: 10,
+                                    //    fontColor: "rgba(0,0,0,0.5)",
+                                    //    fontStyle: "bold"
+                                    //},
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Month of the Year'
+
+                                    }
+
+                                }]
+                            }
+
+                        }
+                    });
+                </script>*@
+
+            <script>
+                 var result = @Html.Raw(ViewBag.DataPoints);
+        var dps =[];
+        for (var i = 0; i < result.length; i++){
+
+            dps.push({ "x": new Date(result[i].year, result[i].month - 1).toLocaleString('en-us', { month: 'short', year: "numeric" }), "y": result[i].netamount });
+        }
+
+        console.log(dps);
+                var timeFormat = 'moment.ISO_8601';
+                var lineChart = document.getElementById('myChart').getContext('2d');
+
+                var config = {
+                    type: 'line',
+                    data: {
+                        datasets: [
+
+                            {
+                                label: "Total Sale",
+                                backgroundColor: 'lightblue',
+                                borderColor: 'royalblue',       
+                                pointStyle: 'circle',
+                                //pointRadius: 5,
+                                //pointHoverRadius: 10,
+                                tension: 0.4,
+                                data: dps,
+                                
+                             
+                            }
+                        ]
+                    },
+                    options: {
+                        animations: {
+                            tension: {
+                                duration: 1200,
+                                easing: 'linear',
+                                from: 1,
+                                to: 0,
+                                loop: true
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            labels: {
+                                usePointStyle: true,
+                            },
+                            onClick: () => { }, // disable legend onClick functionality that filters datasets
+                        },
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: "Month Vs Total Sale"
+                        },
+                        //elements: {
+                        //    point: {
+                        //        radius: 0,
+                        //        hitRadius: 5,
+                        //        hoverRadius: 3,
+                        //    },
+                        //},
+                        scales: {
+                            xAxes: [{
+                                type: "time",
+                                time: {
+                                    displayFormats: {
+                                         
+                                       'month': 'MMM DD',
+                                        'year': 'MMM DD'
+                                    }
+                                },
+                                
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Date'
+                                }
+                            }],
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Total Billed(₹)'
+                                }
+                            }]
+                        },
+                        
+                    }
+                };
+
+                var myLineChart = new Chart(lineChart, config);
+            </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>   

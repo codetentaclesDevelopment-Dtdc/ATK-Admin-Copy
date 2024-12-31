@@ -1,0 +1,158 @@
+﻿@model IEnumerable<DtDc_Billing.Entity_FR.Company>
+
+@{
+    ViewBag.Title = "EditCompanyRateMasterforAgreementoption";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <span class="fs-20">
+                        Edit Company RateMater
+                    </span>
+                    <span class="pull-right">
+                        <a href="@Url.Action("AddCompanyforAgreementoption","Ratemaster")" class="btn btn-primary"> Add Company for Agreement</a>
+                        <a href="@Url.Action("ExportToExcelforAgreementoption","Ratemaster")" class="btn btn-primary"> Export All Records</a>
+                    </span>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-responsive table-striped" style="overflow:auto;display:block">
+                            <thead>
+                                <tr>
+                                    <th style="display:none">
+                                        @Html.DisplayNameFor(model => model.Company_Id)
+                                    </th>
+                                    <th> Option</th>
+                                    <th>
+                                        Sr No
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Company_Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Pf_code)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Company_Address)
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int srno = 1;
+                                    foreach (var item in Model)
+                                    {
+                                       // var id = item.Company_Id;
+                                        var id = item.Company_Id.Replace("&", "__").Replace(".", "xdotx");
+
+                                <tr>
+                                    <td style="display:none">
+                                        @Html.DisplayFor(modelItem => item.Company_Id)
+                                    </td>
+                                    <td>
+
+                                        @Html.ActionLink("Edit", "EditCompanyRateforAgreementoption", new { id = id })
+
+                                    </td>
+                                    <td>
+                                        @srno
+                                    </td>
+
+                                    <td>
+                                        <div class="hideextra" style="width:300px">
+                                            @Html.DisplayFor(modelItem => item.Company_Name)
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pf_code)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+
+                                    <td>
+                                        <div class="hideextra" style="width:400px">
+                                            @Html.DisplayFor(modelItem => item.Company_Address)
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        @Html.ActionLink("Print", "ReportPrinterMethodforAgreementoption", new { id = id }, new { @class = "btn btn-success" })
+                                    </td>
+                                    <td>
+                                        @if (item.Company_Name == "BASIC_TS")
+                                        {
+                                            <input type="button" value="Delete" class="btn btn-danger" disabled>
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Delete", "DeleteCompapy", "Admin", new { id = id },
+                                              new { onclick = "return confirm('Are you sure you want to Delete?')", @class = "btn btn-danger" })
+                                        }
+                                    </td>
+                                </tr>
+                                        srno++;
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .fs-20 {
+        font-size: 20px;
+    }
+
+    @@media (max-width: 768px) {
+        #rate-mater-edit {
+            display: block;
+        }
+
+        .table td.fit,
+        .table th.fit {
+            white-space: nowrap;
+            width: 1%;
+        }
+    }
+</style>
+
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>
+

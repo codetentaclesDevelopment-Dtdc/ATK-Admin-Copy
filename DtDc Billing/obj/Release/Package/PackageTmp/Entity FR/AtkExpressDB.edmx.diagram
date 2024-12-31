@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f040ebda8b9f48cc81831915c51eb6a8" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.ActivityLog" Width="1.5" PointX="3" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.addcodamount" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.addtopayamount" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Admin" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.BoxEnvelopePacking" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Cash" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Cheque" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Company" Width="1.5" PointX="3" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Complaint" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.CreditNote" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.deliverydata" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Destination" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Dtdc_Ecommerce" Width="1.5" PointX="5.25" PointY="68.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Dtdc_Ptp" Width="1.5" PointX="8.25" PointY="69.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.dtdcPlu" Width="1.5" PointX="5.25" PointY="73.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.EmailPromotion" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Employee" Width="1.5" PointX="3" PointY="58.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Expense" Width="1.5" PointX="5.25" PointY="80.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.ExpiredStationary" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.express_cargo" Width="1.5" PointX="5.25" PointY="90.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Franchisee" Width="1.5" PointX="0.75" PointY="61.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.GECrate" Width="1.5" PointX="5.25" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.GECSector" Width="1.5" PointX="3" PointY="65.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Holiday" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Holiday1" Width="1.5" PointX="5.25" PointY="99.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Invoice" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.InvoiceRemark" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Issue" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Issuedstationary" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.NEFT" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.NewDtdc_Ecommerce" Width="1.5" PointX="8.25" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Nondox" Width="1.5" PointX="11.25" PointY="68.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Notification" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Other_Service" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Payment" Width="1.5" PointX="8.25" PointY="80.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.pincodeZone" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.popupimage" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Priority" Width="1.5" PointX="8.25" PointY="74.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.RaiseIssue" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.RaiseQuery" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.RateLaptop" Width="1.5" PointX="11.25" PointY="61.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Ratem" Width="1.5" PointX="11.25" PointY="75.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.RateRevLaptop" Width="1.5" PointX="14.25" PointY="67.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Receipt_details" Width="1.5" PointX="11.25" PointY="80.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.RedeemOtp" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.ReplyAdmin" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Saving" Width="1.5" PointX="5.25" PointY="84.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.sectorName" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Sector" Width="1.5" PointX="3" PointY="89.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Sendmessage" Width="1.5" PointX="8.25" PointY="84.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Service_list" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.singleinvoiceconsignment" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Stationary" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.Transaction" Width="1.5" PointX="3" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.User" Width="1.5" PointX="3" PointY="98.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.wallet_History" Width="1.5" PointX="8.25" PointY="88.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.WalletPoint" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_atkxpressModel.TransactionView" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.Activity_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Dtdc_Ecom__Compa__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Dtdc_Ecommerce__Company___0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__dtdcPlus__Sector__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__GECrate__Company__762C88DA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__NewDtdc_E__Compa__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Nondox__Company___08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Nondox__Company___0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Priority__Compan__32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__RateLapto__Compa__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__RateLapto__Compa__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Ratem__Company_i__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Ratem__Company_i__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__RateRevLa__Compa__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__RateRevLa__Compa__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_company" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_nond" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_ptp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__ReplyAdmi__Compl__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_Ecom" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Dtdc_Ptp__Sector__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__dtdcPlus__Sector__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.Emp_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_emexp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_exp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__express_c__Secto__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__GECSector__Pf_co__6BAEFA67" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_emprecept" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_Pay" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_Sav" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_sect" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_Tansaction1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.sendmasg_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.sendwall_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.User_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__GECrate__GECSect__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__GECrate__Sector___7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Holidays__User_I__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_EcomNew" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_nod" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_emppay" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.FK__Priority__Sector__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_Surface" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_rateamaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_RevSurface" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_rece" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_empsav" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_empmes" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_atkxpressModel.fk_emeall" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

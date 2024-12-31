@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "Chart";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    .chart {
+        border: 3px solid royalblue;
+    }
+
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h4> Sale Report </h4>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+
+                            @using (Html.BeginForm())
+                            {
+                                <div class="col-sm-12">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>To Date:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @if (ViewBag.Fromdatetime != null)
+                                                {
+                                                    <input name="Fromdatetime" class="form-control pull-right" value="@ViewBag.Fromdatetime" id="datepicker" type="text">
+                                                }
+                                                else
+                                                {
+                                                    <input name="Fromdatetime" class="form-control pull-right" id="datepicker" type="text">
+                                                }
+                                                @Html.ValidationMessage("Fromdateeror")
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>To Date:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @if (ViewBag.ToDatetime != null)
+                                                {
+                                                    <input name="ToDatetime" class="form-control pull-right" value="@ViewBag.ToDatetime" id="datepicker1" type="text">
+                                                }
+                                                else
+                                                {
+                                                    <input name="ToDatetime" class="form-control pull-right" id="datepicker1" type="text">
+                                                }
+                                                @Html.ValidationMessage("Todateeror")
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-top:25px">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                            <div class="col-sm-12">
+                                <canvas id="barChart" width="800" height="400"></canvas>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
+@*<script>
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: "PF Wise Report Chart "
+        },
+        axisX: {
+            interval: 1
+        },
+        axisY: {
+            title: "Margin"
+        },
+        data: [{
+            type: "column",
+            dataPoints: @Html.Raw(ViewBag.DataPoints),
+        }]
+    });
+    chart.render();
+
+    }
+                                </script>*@
+<script>
+    var result =@Html.Raw(ViewBag.DataPoints);
+    var dps = [],dpsy = [];
+    for (var i=0; i < result.length; i++)
+    {
+        dps.push({ "label": result[i].label });
+        dpsy.push({ "y": result[i].y });
+    }
+    console.log(dps);
+    console.log(dpsy);
+
+    var ctx = document.getElementById("barChart").getContext('2d');
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dps,
+            datasets: [{
+                label: 'Total Sale',
+                backgroundColor: "rgb(255, 99, 132, 0.5)",
+                borderColor: "rgb(255, 99, 132)",
+                borderWidth: 1,
+                data: dpsy,
+                fill: false,
+            }],
+            options: {
+                animation: {
+                    x: {
+                        duration: 5000,
+                        from: 0
+                    },
+                    y: {
+                        duration: 3000,
+                        from: 500
+                    }
+                }
+            }
+        }
+    });
+</script>
+<script>
+
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+
+    $('#datepicker1').datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+    })
+
+
+
+</script>
+
+@*<script>
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Women Nobel Laureates"
+        },
+        subtitles: [{
+            text: "from 1903 to 2015"
+        }],
+        axisX: {
+            title: "Axis X with interval 50",
+            interval: 50
+        },
+
+        data: [{
+            type: "bar",
+            indexLabel: "{y}",
+            dataPoints: @Html.Raw(ViewBag.DataPoints)
+        }]
+    });
+    chart.render();
+
+    }
+    </script>*@
+

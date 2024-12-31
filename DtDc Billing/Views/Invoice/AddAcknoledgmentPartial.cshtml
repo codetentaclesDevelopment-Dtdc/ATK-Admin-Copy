@@ -1,0 +1,159 @@
+﻿@model DtDc_Billing.Models.AddInvoiceAckModel
+@*@using (Ajax.BeginForm("AddAcknoledgmentPartial", "Invoice", new { id = 123 }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "CashP", OnSuccess = "createsuccess" }, new { enctype = "multipart/form-data" }))
+    {*@
+<form action="testaction/?size=0" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#ackadd" enctype="multipart/form-data" id="form0" method="post" onsubmit="return false">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationMessage("Invfile", new { @class = "text-danger" })
+        @Html.ValidationMessage("Invfile1", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (TempData["Success1"] != null)
+        {
+            <p class="alert alert-success" id="successMessage">@TempData["Success1"]</p>
+
+        }
+        <br />
+        <div class="form-group">
+            <label class="col-md-4">Invoice No</label>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Invoiceno, new { htmlAttributes = new { @class = "form-control Invoiceno", @readonly = "readonly" } })
+                @Html.HiddenFor(model => model.companyid)
+                @Html.HiddenFor(model => model.invfromdate)
+                @Html.HiddenFor(model => model.invtodate)
+                @Html.HiddenFor(model => model.size)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">Upload Documents</label>
+            <div class="col-md-8">
+
+                <input type="file" name="file" id="file" class="form-control" />
+                <label class="text-danger">Only PDF Files To Upload</label>
+                <br />
+                @*@Html.ValidationMessageFor(model => model.file, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Save" id="Addbtn" class="btn btn-success pull-right" />
+            </div>
+        </div>
+    </div>
+    @*}*@
+</form>
+
+
+<script>
+    function createsuccess(data) {
+        alert("ajshgd")
+        if (data.RedirectUrl)
+            window.location.href = data.RedirectUrl;
+    }
+</script>
+
+
+@*<script type="text/javascript">
+        $(function () {
+            $("#form0").submit(function (event) {
+                var dataString;
+
+                event.preventDefault();
+                var action = $("#form0").attr("action");
+                if ($("#form0").attr("enctype") == "multipart/form-data") {
+                    //this only works in some browsers.
+                    //purpose? to submit files over ajax. because screw iframes.
+                    //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
+                    dataString = new FormData($("#form0").get(0));
+                    contentType = false;
+                    processData = false;
+                } else {
+                    // regular form, do your own thing if you need it
+                }
+                //$.ajax({
+                //    type: "POST",
+                //    url: action,//'/Invoice/AddAcknoledgment',//action,
+                //    data: dataString,
+                //    dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
+                //    contentType: contentType,
+                //    processData: processData,
+                //    success: function (response) {
+                //        if (response.result == true) {
+                //            alert("Form submitted!");
+                //        }
+                //        else {
+                //            alert("errorrr");
+                //            //$('.modal-header').addClass('alert alert-info');
+                //        }
+                //        //if (data.RedirectUrl)
+                //        //    window.location.href = data.RedirectUrl;
+                //        //alert(data);
+                //        //else
+                //        // alert(data.responseText);
+                //        //BTW, data is one of the worst names you can make for a variable
+                //        //handleSuccessFunctionHERE(data);
+                //    },
+                //    error: function (jqXHR, textStatus, errorThrown) {
+                //        //do your own thing
+
+                //    //    //alert("fail");
+                //    }
+                //});
+            }); //end .submit()
+        });
+    </script>*@
+
+<script type="text/javascript">
+    $(function () {
+        $("#form0").submit(function (event) {
+            var dataString;
+            event.preventDefault();
+            var action = $("#form0").attr("action");
+            if ($("#form0").attr("enctype") == "multipart/form-data") {
+                //this only works in some browsers.
+                //purpose? to submit files over ajax. because screw iframes.
+                //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
+                dataString = new FormData($("#form0").get(0));
+                //alert(dataString);
+                contentType = false;
+                processData = false;
+            } else {
+                // regular form, do your own thing if you need it
+            }
+            $.ajax({
+                type: "POST",
+                url: 'AddAcknoledgment',//action,
+                data: dataString,
+                contentType: contentType,
+                processData: processData,
+                success: function (success) {
+
+                    $('#ackadd').html(success);
+
+                    //if (success.RedirectUrl)
+                    //    window.location.href = success.RedirectUrl;
+                    //alert(success.RedirectUrl);
+                        //window.location.href = success.RedirectUrl + "?Data1 = " + value1 + " & Data2=" + value2;
+                    return false;
+                    //  window.location.href = data.RedirectUrl;//BTW, data is one of the worst names you can make for a variable
+                    //handleSuccessFunctionHERE(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //do your own thing
+                    debugger
+
+                    alert("fail");
+                }
+            });
+            return false;
+        }); //end .submit()
+    });
+</script>

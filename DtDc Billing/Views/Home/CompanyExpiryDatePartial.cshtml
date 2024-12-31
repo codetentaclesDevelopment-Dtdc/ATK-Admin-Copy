@@ -1,0 +1,61 @@
+﻿@model DtDc_Billing.CustomModel.dashboardDataModel
+<style>
+
+    .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+
+    @@keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    @@-webkit-keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    .urlpath {
+        color: black;
+    }
+
+    .products-list .product-info {
+        margin-left: 0;
+    }
+
+    .products-list .product-title {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .product-info a:hover {
+        color: #3c8dbc;
+    }
+</style>
+
+<div class="col-md-12">
+
+    @*<marquee width="100%" direction="right" height="50px">
+        Total Company Expiry Count is - @ViewBag.ExpiryCompCount
+        <a href="@Url.Action("PfReportDaily", "Reports")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    </marquee>*@
+    <div class="box box-primary">
+        <div class="box-header with-border">
+
+            <strong style="font-size: 18px;"><i class="fa fa-bell-o" aria-hidden="true"></i><span style="color: #bc3f30; "> Company Updates</span></strong>
+            @*<marquee direction="right">*@
+                <span class="badge bg-blue blink"> Total Company Expiry Count is - @ViewBag.ExpiryCompCount</span>
+                <a href="@Url.Action("CompanyExpiryDateReport", "Reports")" class="small-box-footer" target="_blank" >More info <i class="fa fa-arrow-circle-right"></i></a>
+   
+            @*</marquee>*@
+               
+        </div>
+            
+        </div>
+
+</div>
+
+

@@ -1,0 +1,489 @@
+﻿
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/SupportLayout.cshtml";
+}
+
+
+<section class="content">
+
+    @*<div class="col-sm-3 " style="float: right" ;>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger total-label">Complaint Count</button>
+                </div>
+
+                <input type="text" class="form-control total-amount" value="@ViewBag.complaintcount">
+            </div>
+        </div>*@
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box-body">
+
+
+                <div class="text-center">
+                    <h1 style="margin-bottom: 30px; font-weight: 600;color: #898787;">Dashboard</h1>
+
+                    @*<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>*@
+                    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+                </div>
+
+
+                <!-- Small boxes (Stat box) -->
+                <div class="row note1">
+                    <div class="col-lg-12 col-xs-12 note2 new">
+                        <div class="text-center notetxt">
+                            <div class="notstyl">
+                                <p><strong style="color: #bc3f30; font-size: 20px;">Cash Collection  </strong> </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+
+                                    <span id="Todayamt" class="info-box-number">   <small>Loading...</small></span>
+                                    <br>
+                                    <p>Todays Cash Collection</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-inr"></i>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+
+                            <div class="small-box" style="background-color: #4f27b096 !important; color: white;">
+                                <div class="inner">
+
+                                    <span id="Lastamt" class="info-box-number"> <small>Loading...</small></span>
+                                    <br>
+                                    <p>This Month Cash Collection</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-inr"></i>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+
+                                    <span id="todaybooking" class="info-box-number"> <small>Loading...</small></span>
+                                    <br>
+                                    <p>Todays No of Booking</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-list"></i>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+
+                                    <span id="lastbooking" class="info-box-number"> <small>Loading...</small></span>
+                                    <br>
+                                    <p>
+                                        This Month No. of Bookings
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-list-alt"></i>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- ./col -->
+
+                    </div>
+                </div>
+                <!-- /.row -->
+                @*@if (ViewBag.stationary != 0)
+                    {
+
+
+                        <div class="col-md-4">
+                            <div class="info-box bg-yellow">
+                                <span class="info-box-icon"><i class="fa fa-exclamation-circle"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Stationaries are going to Expire</span>
+                                    <span class="info-box-number"> <strong>@ViewBag.stationary</strong></span>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 50%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        <a class="text-black" href="@Url.Action("ExpiredStationary","Stationery")">View details</a>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }*@
+
+                <div class="row note1">
+                    <div class="col-sm-12 billingsection">
+
+                        <div class="text-center notetxt">
+                            <div class="notstyl">
+                                <p><strong style="color: #bc3f30; font-size: 20px;">Billing Reports</strong> </p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="info-box bg-orange">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Todays Sale</span>
+                                    <span class="info-box-number">
+                                        <strong>@ViewBag.sumofbilling</strong>
+                                    </span>
+                                    <hr class="topbordr" />
+                                  
+
+
+
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <div class="info-box bg-teal">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">This Month Sale</span>
+                                    <span class="info-box-number"> <strong id="sumofbillingcurrentmonth">@ViewBag.sumofbillingcurrentmonth</strong></span>
+                                    <hr class="topbordr" />
+
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="info-box  bg-orange">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Avg Sale per month</span>
+                                    <span class="info-box-number"> <strong>@ViewBag.avgofbillingsum</strong></span>
+                                    <hr class="topbordr" />
+
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="info-box bg-light-blue new">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Todays No of Bookings</span>
+                                    <span class="info-box-number"> <strong>@ViewBag.countofbilling</strong></span>
+                                    <hr class="topbordr" />
+                                 
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <div class="info-box bg-teal new">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">This Month No. of Bookings</span>
+                                    <span class="info-box-number"> <strong id="countofbillingcurrentmonth">@ViewBag.countofbillingcurrentmonth</strong></span>
+                                    <hr class="topbordr" />
+                                  
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="info-box  bg-light-blue ">
+
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Avg No. of Bookings</span>
+                                    <span class="info-box-number"> <strong>@ViewBag.avgofbillingcount</strong></span>
+
+                                    <hr class="topbordr" />
+
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+
+
+
+                        <div class="row ">
+                            <div class="col-sm-12 bgcolors">
+
+                                <br />
+                                <br />
+
+
+
+                                <div class="col-md-2" style="opacity:0">
+                                    <div class="info-box bg-orange">
+                                        <span class="info-box-icon"><i class="fa fa-envelope-open-o"></i></span>
+
+
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-4" style="float:left;">
+                                    <div class="info-box bg-teal">
+
+
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Sale</span>
+                                            <span class="info-box-number"> <strong id="totalsale">Loading...</strong></span>
+
+                                            <hr class="topbordr" />
+                                         
+                                        </div>
+
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4" style="float:left;">
+                                    <div class="info-box bg-light-blue">
+
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total No of Bookings</span>
+                                            <span class="info-box-number"> <strong id="totalnoofbook">Loading...</strong></span>
+
+                                            <hr class="topbordr" />
+                                          
+                                        </div>
+
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+</section>
+
+
+@if (ViewBag.sendmail != null)
+{
+    <script>
+        alert('@ViewBag.sendmail');
+    </script>
+}
+
+
+
+
+
+
+@if (ViewBag.RedirectSector == true)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#overlay').modal('show');
+
+        });
+
+
+    </script>
+}
+
+
+<script>
+    $(document).ready(function () {
+
+
+
+
+           $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Consignment", "AtkApi")',
+            data: { },
+            dataType: 'json',
+            success: function (data) {
+
+    var rows;
+    $.each(data, function (i, item) {
+        rows += "<tr>"
+            + "<td>" + item.Destination + "</td>"
+            + "<td>" + item.Count + "</td>"
+
+             + "</tr>";
+    });
+    $('.tblCons tbody').append(rows);
+
+    $(function () {
+
+        $('.tblCons').dataTable({
+            "bPaginate": false,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": false
+        });
+
+
+    });
+ },
+            error: function (emp) {
+                alert('error');
+            }
+        });
+
+
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Destination", "AtkApi")',
+            data: { },
+            dataType: 'json',
+            success: function (data) {
+
+                var rows;
+                $.each(data, function (i, item) {
+                    rows += "<tr>"
+                        + "<td>" + item.Destination + "</td>"
+
+                        + "<td>" + item.Count + "</td>"
+
+                        + "</tr>";
+                });
+
+
+
+                $('.tblProducts tbody').append(rows);
+
+                $(function () {
+
+                    $('#table_display_block').dataTable({
+                        "bPaginate": false,
+                        "bLengthChange": true,
+                        "bFilter": true,
+                        "bSort": true,
+                        "bInfo": false,
+                        "bAutoWidth": false
+                    });
+
+
+                });
+            },
+
+            error: function (emp) {
+                alert('error');
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+
+
+
+
+
+
+     $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Datewise", "AtkApi")',
+            data: { },
+            dataType: 'json',
+            success: function (data) {
+
+                $("#Todayamt").html('<i class="fa fa-inr"></i> ' + data.Amount);
+                $("#todaybooking").text(data.Count);
+ },
+            error: function (emp) {
+                alert('error');
+            }
+        });
+
+             $.ajax({
+            type: 'GET',
+            url: '@Url.Action("ThisMonth", "AtkApi")',
+            data: { },
+            dataType: 'json',
+            success: function (data) {
+                $("#Lastamt").text(data.Amount);
+                $("#lastbooking").text(data.Count);
+                var totalthismonthsale = parseInt($("#sumofbillingcurrentmonth").text());
+                var thismonthnoofbooking = parseInt($("#countofbillingcurrentmonth").text());
+                $("#totalsale").text(data.Amount + totalthismonthsale);
+                $("#totalnoofbook").text(data.Count + thismonthnoofbooking);
+
+
+ },
+            error: function (emp) {
+                alert('error');
+            }
+        });
+
+
+
+    });
+</script>

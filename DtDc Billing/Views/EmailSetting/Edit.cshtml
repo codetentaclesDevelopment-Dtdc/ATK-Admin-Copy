@@ -1,0 +1,87 @@
+﻿@model DtDc_Billing.Entity_FR.EmailPromotion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+@*@model DtDc_Billing.Entity_FR.EmailPromotion*@
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link href="~/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<script src="~/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h4>Email Content</h4>
+                </div>
+                <div class="form-horizontal">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.HiddenFor(model => model.eid)
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">Status</label>
+
+                                                <div class="col-md-10">
+                                                    @Html.DropDownListFor(modelItem => modelItem.message, new[] { new SelectListItem { Text = "True", Value = "True" }, new SelectListItem { Text = "False", Value = "False" } }, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.message, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">Email Content</label>
+                                                <div class="col-md-10">
+                                                    @Html.TextAreaFor(model => model.note, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+
+                                                    @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Update" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-primary" })
+
+</div>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Get the description element to check it exists and that it has a value
+        var d = $('#note');
+        //alert(d.val());
+
+        // Create the editor
+        CKEDITOR.replace('note', {
+            language: 'en'
+        });
+    });
+</script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>

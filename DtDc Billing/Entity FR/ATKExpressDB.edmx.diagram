@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="501312b7c85a46d3a77a46f1fba2feef" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.ActivityLog" Width="1.5" PointX="3" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.addcodamount" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.addtopayamount" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Admin" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.BoxEnvelopePacking" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Cash" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Cheque" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Company" Width="1.5" PointX="3" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Complaint" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.CreditNote" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.deliverydata" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Destination" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Dtdc_Ecommerce" Width="1.5" PointX="5.25" PointY="70.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Dtdc_Ptp" Width="1.5" PointX="8.25" PointY="70.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.dtdcPlu" Width="1.5" PointX="5.25" PointY="75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.EmailPromotion" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Employee" Width="1.5" PointX="3" PointY="59.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Expense" Width="1.5" PointX="5.25" PointY="82.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.ExpiredStationary" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.express_cargo" Width="1.5" PointX="5.25" PointY="92.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Franchisee" Width="1.5" PointX="0.75" PointY="62.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.GECrate" Width="1.5" PointX="5.25" PointY="65" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.GECSector" Width="1.5" PointX="3" PointY="66.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Holiday" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Holiday1" Width="1.5" PointX="5.25" PointY="101.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Invoice" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.InvoiceRemark" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Issue" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Issuedstationary" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.NEFT" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.NewDtdc_Ecommerce" Width="1.5" PointX="8.25" PointY="64.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Nondox" Width="1.5" PointX="11.25" PointY="70.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Notification" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Other_Service" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Payment" Width="1.5" PointX="8.25" PointY="82.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.pincodeZone" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.popupimage" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Priority" Width="1.5" PointX="8.25" PointY="76.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.RaiseIssue" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.RaiseQuery" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.RateLaptop" Width="1.5" PointX="11.25" PointY="63.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Ratem" Width="1.5" PointX="11.25" PointY="77" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.RateRevLaptop" Width="1.5" PointX="14.25" PointY="69.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Receipt_details" Width="1.5" PointX="11.25" PointY="82.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.RedeemOtp" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.ReplyAdmin" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Saving" Width="1.5" PointX="5.25" PointY="86.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.sectorName" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Sector" Width="1.5" PointX="3" PointY="91.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Sendmessage" Width="1.5" PointX="8.25" PointY="86.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Service_list" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.singleinvoiceconsignment" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Stationary" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.Transaction" Width="1.5" PointX="3" PointY="109.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.User" Width="1.5" PointX="3" PointY="100.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.wallet_History" Width="1.5" PointX="8.25" PointY="90.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.WalletPoint" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A43B74_wingsgrowdbModel.TransactionView" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.Activity_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Dtdc_Ecom__Compa__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Dtdc_Ecommerce__Company___0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__dtdcPlus__Sector__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__GECrate__Company__762C88DA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__NewDtdc_E__Compa__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Nondox__Company___08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Nondox__Company___0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Priority__Compan__32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__RateLapto__Compa__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__RateLapto__Compa__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Ratem__Company_i__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Ratem__Company_i__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__RateRevLa__Compa__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__RateRevLa__Compa__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_company" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_nond" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_ptp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__ReplyAdmi__Compl__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_Ecom" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Dtdc_Ptp__Sector__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__dtdcPlus__Sector__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.Emp_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_emexp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_exp" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__express_c__Secto__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__GECSector__Pf_co__6BAEFA67" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_emprecept" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_Pay" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_Sav" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_sect" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_Tansaction1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.sendmasg_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.sendwall_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.User_Fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__GECrate__GECSect__7FB5F314" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__GECrate__Sector___7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Holidays__User_I__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_EcomNew" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_nod" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_emppay" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.FK__Priority__Sector__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_Surface" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_rateamaster" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_RevSurface" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_rece" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_empsav" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_empmes" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A43B74_wingsgrowdbModel.fk_emeall" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A43B74_atkxpressModel1StoreContainer" CdmEntityContainer="DB_A43B74_atkxpressEntities3">
+    <EntitySetMapping Name="singleinvoiceconsignments">
+      <EntityTypeMapping TypeName="DB_A43B74_atkxpressModel1.singleinvoiceconsignment">
+        <MappingFragment StoreEntitySet="singleinvoiceconsignments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Consignment_no" ColumnName="Consignment_no" />
+          <ScalarProperty Name="Invoice_no" ColumnName="Invoice_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

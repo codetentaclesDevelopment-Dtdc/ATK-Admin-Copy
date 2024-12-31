@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Consignment_no</th><th scope="col">bookingdate</th><th scope="col">Pf_Code</th><th scope="col">Customer_Id</th><th scope="col">Gst_No</th><th scope="col">chargable_weight</th><th scope="col">Mode</th><th scope="col">Type_t</th><th scope="col">Name</th><th scope="col">Pincode</th><th scope="col">BillAmount</th><th scope="col">Amount</th><th scope="col">Risksurcharge</th><th scope="col">CnoteCharges</th><th scope="col">RoyalCharges</th><th scope="col">ServiceCharges</th><th scope="col">Subtotal</th><th scope="col">Fuel_Sur_Charge</th><th scope="col">FscAmt</th><th scope="col">Taxable</th><th scope="col">Cgst</th><th scope="col">Sgst</th><th scope="col">Igst</th><th scope="col">GrandTotal</th><th scope="col">CNote_cost</th><th scope="col">dtdcamount</th>
+		</tr><tr>
+			<td>P34265542</td><td>03-02-2023</td><td>PF1039</td><td>basic_EcomTest</td><td>GST7653465</td><td>4</td><td>AR</td><td>D</td><td>HINJEWADI</td><td>411057</td><td>0</td><td>565</td><td>0</td><td>0</td><td>0</td><td>0</td><td>565</td><td>0</td><td>0</td><td>565</td><td>0</td><td>0</td><td>0</td><td>565</td><td>0</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,76 @@
+﻿@model DtDc_Billing.Models.AddlogoModel
+
+
+
+@using (Html.BeginForm("UploadDocument", "RateMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h4>Add Documents</h4>
+                </div>
+                <!-- /.box-header -->
+
+
+                <div class="form-horizontal">
+                    <div class="box-body">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <label class="col-md-3">Upload Documents</label>
+                            <div class="col-md-4">
+                                <input type="file" name="file" id="file" class="form-control" />
+                                <input type="hidden" name="Company_Id" value="@ViewBag.companyid" />
+                                <label class="text-danger">Only PDF/Word Files To Upload</label>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            <label class="col-md-2 control-label">Upload logo</label>
+                            <div class="col-md-5">
+                                <input type="file" name="file" id="file" class="form-control" />
+                                @Html.ValidationMessageFor(m => m.file, "", new { @class = "text-danger" })
+                                <input type="hidden" name="Company_Id" value="@ViewBag.companyid" />
+                            </div>
+                        </div>*@
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
+
+        $(document).ready(function () {
+
+            var data = '@TempData["Success"]';
+
+            if (data != null && data!="")
+            {
+                alert(data);
+            }
+
+
+        });
+
+</script>
+
